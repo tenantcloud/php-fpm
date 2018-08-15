@@ -97,6 +97,7 @@ RUN set -x \
 		whois \
 		xz-utils \
 		yarn \
+		libsqlite3-dev \
 	&& apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false $fetchDeps \
 	&& rm -rf /var/lib/apt/lists/*
 
@@ -126,7 +127,6 @@ RUN set -x \
 && npm install -g mdlint \
 && npm install -g gulp \
 && npm install -g gulp-cli \
-&& npm install -g node-sass \
 && npm install -g pm2 \
  \
 # codeception
@@ -185,9 +185,9 @@ RUN set -x \
 && su - ${MY_USER} -c '/usr/local/src/linuxbrew/bin/brew config' \
  \
 # mhsendmail
-	&& wget https://github.com/mailhog/mhsendmail/releases/download/v0.2.0/mhsendmail_linux_amd64 \
-&& chmod +x mhsendmail_linux_amd64 \
-&& mv mhsendmail_linux_amd64 /usr/local/bin/mhsendmail \
+#	&& wget https://github.com/mailhog/mhsendmail/releases/download/v0.2.0/mhsendmail_linux_amd64 \
+#&& chmod +x mhsendmail_linux_amd64 \
+#&& mv mhsendmail_linux_amd64 /usr/local/bin/mhsendmail \
  \
 # mysqldumpsecure
 	&& git clone https://github.com/cytopia/mysqldump-secure.git /usr/local/src/mysqldump-secure \

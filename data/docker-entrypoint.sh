@@ -103,14 +103,16 @@ set_docker_logs \
 ###
 ### Setup postfix
 ###
-if is_docker_logs_enabled "DOCKER_LOGS" >/dev/null; then
-	# PHP mail function should log to stderr
-	set_postfix "ENABLE_MAIL" "${MY_USER}" "${MY_GROUP}" "${PHP_INI_DIR}" "/proc/self/fd/2" "1" "${DEBUG_LEVEL}"
-else
-	# PHP mail function should log to file
-	set_postfix "ENABLE_MAIL" "${MY_USER}" "${MY_GROUP}" "${PHP_INI_DIR}" "${PHP_MAIL_LOG}" "0" "${DEBUG_LEVEL}"
-fi
+#if is_docker_logs_enabled "DOCKER_LOGS" >/dev/null; then
+#	# PHP mail function should log to stderr
+#	set_postfix "ENABLE_MAIL" "${MY_USER}" "${MY_GROUP}" "${PHP_INI_DIR}" "/proc/self/fd/2" "1" "${DEBUG_LEVEL}"
+#else
+#	# PHP mail function should log to file
+#	set_postfix "ENABLE_MAIL" "${MY_USER}" "${MY_GROUP}" "${PHP_INI_DIR}" "${PHP_MAIL_LOG}" "0" "${DEBUG_LEVEL}"
+#fi
 
+# Start mailcather
+mailcatcher
 
 ###
 ### Validate socat port forwards
